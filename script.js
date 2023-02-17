@@ -38,7 +38,3 @@ function init() {
             processRows(data);
         })
 }
-
-//1033189701366-sarco9kv7ughq6jld4oktdpn7f0bsk2o.apps.googleusercontent.com
-// API KEY AIzaSyAgOyGb6slHo7YLkkLJpKUNGVKXukafokw
-// https://docs.google.com/spreadsheets/d/1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM/edit?usp=sharing
