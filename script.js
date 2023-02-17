@@ -3,9 +3,9 @@ const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
 const sheetName = 'BDD Jardin sans mur';
 const query = encodeURIComponent('Select *');
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
-
 const data = [];
 document.addEventListener('DOMContentLoaded', init);
+const output = document.querySelector('.output')
 
 function init() {
     fetch(url)
