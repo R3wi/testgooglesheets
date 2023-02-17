@@ -5,7 +5,7 @@ const query = encodeURIComponent('Select *');
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 const data = [];
 document.addEventListener('DOMContentLoaded', init);
-const output = document.querySelector('.output')
+const output = document.querySelector('#output')
 
 function init() {
     fetch(url)
