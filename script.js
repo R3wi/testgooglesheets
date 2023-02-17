@@ -1,0 +1,44 @@
+const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
+const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
+const sheetName = 'BDD Jardin sans mur';
+const query = encodeURIComponent('Select *');
+const url = `${base}&sheet=${sheetName}&tq=${query}`;
+
+const data = [];
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+    fetch(url)
+        .then(res => res.text())
+        .then(rep => {
+            //Remove additional text and extract only JSON:
+            const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
+            console.log(jsonData);
+            const colz = [];
+            const tr = document.createElement('tr');
+            //Extract column labels
+            jsonData.table.cols.forEach((heading) => {
+                if (heading.label) {
+                    let column = heading.label;
+                    colz.push(column);
+                    const th = document.createElement('th');
+                    th.innerText = column;
+                    tr.appendChild(th);
+                }
+            })
+            output.appendChild(tr);
+            //extract row data:
+            jsonData.table.rows.forEach((rowData) => {
+                const row = {};
+                colz.forEach((ele, ind) => {
+                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
+                })
+                data.push(row);
+            })
+            processRows(data);
+        })
+}
+
+//1033189701366-sarco9kv7ughq6jld4oktdpn7f0bsk2o.apps.googleusercontent.com
+// API KEY AIzaSyAgOyGb6slHo7YLkkLJpKUNGVKXukafokw
+// https://docs.google.com/spreadsheets/d/1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM/edit?usp=sharing
