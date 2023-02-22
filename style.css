@@ -5,9 +5,19 @@ main{
 	position:absolute;
 	width:100%;
 }
-section.artiste h2{
-	
+section#liens_artistes{
+	position:relative;
+	z-index: 2;
 }
-.lignes_artistes{
-	
+section#liens_artistes h2{
+	position: absolute;
+	width: 20%;
+	background: red;
+}
+section#liens_artistes h2#lien_artiste_1{
+	left: calc(75% - 20%);
+	top: 20em;
+}
+section#liens_artistes h2 a{
+
 }
