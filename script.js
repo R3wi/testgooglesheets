@@ -48,7 +48,7 @@ function init() {
                     if(rowData.c[ind] != null){
                         console.log('element: ' + rowData.c[ind].v);
                         console.log('element 2:' + ele);
-                        if(ind == 3){
+                        if(ind == 2){
                             nomArtistes.push(rowData.c[ind].v);
                         }
                     }
