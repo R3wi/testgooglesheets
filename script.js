@@ -15,7 +15,7 @@ function init() {
             const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
             console.log(jsonData);
 
-
+            const nomArtistes = [];
 
 
 
@@ -25,6 +25,8 @@ function init() {
             const colz = [];
             const tr = document.createElement('tr');
             //Extract column labels
+
+            // TODO: fetch l'index de la colonne qui nous intéresse pour la réutiliser pour récupérer les données, ça évitera de SUPPOSER la position de la bonne colonne
             jsonData.table.cols.forEach((heading) => {
                 if (heading.label) {
                     console.log('colonne : ' + heading.label);
@@ -38,8 +40,11 @@ function init() {
             output.appendChild(tr);
             //extract row data:
             jsonData.table.rows.forEach((rowData) => {
+                console.log('row' + rowData);
+
                 const row = {};
                 colz.forEach((ele, ind) => {
+                    console.log('element: ' + rowData.c[ind].v);
                     row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
                 })
                 data.push(row);
