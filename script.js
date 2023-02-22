@@ -19,8 +19,7 @@ function init() {
         .then(rep => {
             //Remove additional text and extract only JSON:
             const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
-            console.log(jsonData);
-
+            
             
 
 
@@ -35,7 +34,7 @@ function init() {
             // TODO: fetch l'index de la colonne qui nous intéresse pour la réutiliser pour récupérer les données, ça évitera de SUPPOSER la position de la bonne colonne
             jsonData.table.cols.forEach((heading) => {
                 if (heading.label) {
-                    console.log('colonne : ' + heading.label);
+                    //console.log('colonne : ' + heading.label);
                     let column = heading.label;
                     colz.push(column);
                     const th = document.createElement('th');
@@ -46,14 +45,14 @@ function init() {
             //output.appendChild(tr);
             //extract row data:
             jsonData.table.rows.forEach((rowData) => {
-                console.log('row: (suivant)');
-                console.log(rowData);
+                //console.log('row: (suivant)');
+                //console.log(rowData);
 
                 const row = {};
                 colz.forEach((ele, ind) => {
                     if(rowData.c[ind] != null){
-                        console.log('element: ' + rowData.c[ind].v);
-                        console.log('element 2:' + ele);
+                        //console.log('element: ' + rowData.c[ind].v);
+                        //console.log('element 2:' + ele);
                         if(ind == 2){
                             nomArtistes.push(rowData.c[ind].v);
                         }
@@ -68,6 +67,7 @@ function init() {
         })
 
 
+        console.log("nomArtistes");
         console.log(nomArtistes);
 
 
