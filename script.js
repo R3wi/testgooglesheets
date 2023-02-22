@@ -14,11 +14,20 @@ function init() {
             //Remove additional text and extract only JSON:
             const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
             console.log(jsonData);
+
+
+
+
+
+
+
+
             const colz = [];
             const tr = document.createElement('tr');
             //Extract column labels
             jsonData.table.cols.forEach((heading) => {
                 if (heading.label) {
+                    console.log('colonne : ' + heading.label);
                     let column = heading.label;
                     colz.push(column);
                     const th = document.createElement('th');
