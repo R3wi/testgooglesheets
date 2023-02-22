@@ -70,6 +70,9 @@ function init() {
 
         console.log(nomArtistes);
 
+
+        $('#lien_artiste_1').html(nomArtistes[0]);
+
 }
 
 function processRows(json) {
