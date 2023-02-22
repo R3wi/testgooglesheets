@@ -44,7 +44,8 @@ function init() {
             })
             //output.appendChild(tr);
             //extract row data:
-            jsonData.table.rows.forEach((rowData) => {
+            jsonData.table.rows.forEach((rowData, rowind) => {
+                console.log('rowind' + rowind);
                 //console.log('row: (suivant)');
                 //console.log(rowData);
 
@@ -55,6 +56,12 @@ function init() {
                         //console.log('element 2:' + ele);
                         if(ind == 2){
                             nomArtistes.push(rowData.c[ind].v);
+
+                            
+                            const artiste1 = document.getElementById("lien_artiste_1");
+                            const artiste1_a = artiste1.getElementsByTagName("a");
+                            const artiste1_a_ele = artiste1_a[0];
+                            artiste1_a_ele.textContent = nomArtistes[0];
                         }
                     }
                     
