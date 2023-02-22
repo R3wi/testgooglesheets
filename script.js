@@ -132,4 +132,5 @@ $( document ).ready(function() {
 
         $('#lien_artiste_1 a').html('coucou');
         console.log(nomArtistes[0]);
+        $('#lien_artiste_1 a').html(nomArtistes[0]);
 });
