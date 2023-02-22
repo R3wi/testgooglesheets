@@ -66,9 +66,28 @@ function init() {
             processRows(data);
         })
 
+        const artiste1 = document.getElementById("lien_artiste_1");
+        const artiste1_a = artiste1.getElementsByTagName("a");
+        artiste1_a[0].value('coucou');
+        const artiste2 = document.getElementById("lien_artiste_2");
+        const artiste2_a = artiste2.getElementsByTagName("a");
+        const artiste3 = document.getElementById("lien_artiste_3");
+        const artiste3_a = artiste3.getElementsByTagName("a");
+        const artiste4 = document.getElementById("lien_artiste_4");
+        const artiste4_a = artiste4.getElementsByTagName("a");
+        const artiste5 = document.getElementById("lien_artiste_5");
+        const artiste5_a = artiste5.getElementsByTagName("a");
+        
 
         console.log("nomArtistes");
         console.log(nomArtistes);
+        $( document ).ready(function() {
+            $('#lien_artiste_1 a').html(nomArtistes[0]);
+            $('#lien_artiste_2 a').html(nomArtistes[1]);
+            $('#lien_artiste_3 a').html(nomArtistes[2]);
+            $('#lien_artiste_4 a').html(nomArtistes[3]);
+            $('#lien_artiste_5 a').html(nomArtistes[4]);
+        });
 }
 
 function processRows(json) {
@@ -85,10 +104,3 @@ function processRows(json) {
     })
 }
 
-$( document ).ready(function() {
-    $('#lien_artiste_1 a').html(nomArtistes[0]);
-    $('#lien_artiste_2 a').html(nomArtistes[1]);
-    $('#lien_artiste_3 a').html(nomArtistes[2]);
-    $('#lien_artiste_4 a').html(nomArtistes[3]);
-    $('#lien_artiste_5 a').html(nomArtistes[4]);
-});
