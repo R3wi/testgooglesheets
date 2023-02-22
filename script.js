@@ -45,7 +45,6 @@ function init() {
             //output.appendChild(tr);
             //extract row data:
             jsonData.table.rows.forEach((rowData, rowind) => {
-                console.log('rowind' + rowind);
                 //console.log('row: (suivant)');
                 //console.log(rowData);
 
@@ -57,10 +56,21 @@ function init() {
                         if(ind == 2){
                             nomArtistes.push(rowData.c[ind].v);
                             
-                            const artiste1 = document.getElementById("lien_artiste_1");
-                            const artiste1_a = artiste1.getElementsByTagName("a");
-                            const artiste1_a_ele = artiste1_a[0];
-                            artiste1_a_ele.textContent = rowData.c[ind].v;
+                            if(rowind == 0){
+                                const artiste1 = document.getElementById("lien_artiste_1");
+                                const artiste1_a = artiste1.getElementsByTagName("a");
+                                const artiste1_a_ele = artiste1_a[rowind];
+                                artiste1_a_ele.textContent = rowData.c[ind].v;
+                            }else if(rowind == 1){
+
+                            }else if(rowind == 2){
+
+                            }else if(rowind == 3){
+
+                            }else if(rowind == 4){
+
+                            }
+                            
                         }
                     }
                     
