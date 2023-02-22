@@ -45,12 +45,16 @@ function init() {
 
                 const row = {};
                 colz.forEach((ele, ind) => {
-                    console.log('element: ' + rowData.c[ind].v);
-                    console.log('element 2:' + ele);
-                    row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
-                    if(ind == 3){
-                        nomArtistes.push(rowData.c[ind].v);
+                    if(rowData.c[ind] != null){
+                        console.log('element: ' + rowData.c[ind].v);
+                        console.log('element 2:' + ele);
+                        if(ind == 3){
+                            nomArtistes.push(rowData.c[ind].v);
+                        }
                     }
+                    
+                    //row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
+                    
                 })
                 data.push(row);
             })
