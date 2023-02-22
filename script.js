@@ -7,6 +7,12 @@ const data = [];
 document.addEventListener('DOMContentLoaded', init);
 const output = document.querySelector('#output')
 
+
+
+const nomArtistes = [];
+
+
+
 function init() {
     fetch(url)
         .then(res => res.text())
@@ -15,7 +21,7 @@ function init() {
             const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
             console.log(jsonData);
 
-            const nomArtistes = [];
+            
 
 
 
