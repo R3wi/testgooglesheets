@@ -40,7 +40,8 @@ function init() {
             output.appendChild(tr);
             //extract row data:
             jsonData.table.rows.forEach((rowData) => {
-                console.log('row' + rowData);
+                console.log('row: (suivant)');
+                console.log(rowData);
 
                 const row = {};
                 colz.forEach((ele, ind) => {
