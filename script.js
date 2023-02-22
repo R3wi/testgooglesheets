@@ -5,7 +5,7 @@ const query = encodeURIComponent('Select *');
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 const data = [];
 document.addEventListener('DOMContentLoaded', init);
-const output = document.querySelector('#output')
+//const output = document.querySelector('#output')
 
 
 
@@ -43,7 +43,7 @@ function init() {
                     tr.appendChild(th);
                 }
             })
-            output.appendChild(tr);
+            //output.appendChild(tr);
             //extract row data:
             jsonData.table.rows.forEach((rowData) => {
                 console.log('row: (suivant)');
@@ -88,6 +88,6 @@ function processRows(json) {
             td.textContent = row[key];
             tr.appendChild(td);
         })
-        output.appendChild(tr);
+        //output.appendChild(tr);
     })
 }
