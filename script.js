@@ -47,11 +47,18 @@ function init() {
                     console.log('element: ' + rowData.c[ind].v);
                     console.log('element 2:' + ele);
                     row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
+                    if(ind == 3){
+                        nomArtistes.push(rowData.c[ind].v);
+                    }
                 })
                 data.push(row);
             })
             processRows(data);
         })
+
+
+        console.log(nomArtistes);
+
 }
 
 function processRows(json) {
