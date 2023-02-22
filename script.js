@@ -62,13 +62,25 @@ function init() {
                                 const artiste1_a_ele = artiste1_a[rowind];
                                 artiste1_a_ele.textContent = rowData.c[ind].v;
                             }else if(rowind == 1){
-
+                                const artiste2 = document.getElementById("lien_artiste_2");
+                                const artiste2_a = artiste2.getElementsByTagName("a");
+                                const artiste2_a_ele = artiste2_a[rowind];
+                                artiste2_a_ele.textContent = rowData.c[ind].v;
                             }else if(rowind == 2){
-
+                                const artiste3 = document.getElementById("lien_artiste_3");
+                                const artiste3_a = artiste3.getElementsByTagName("a");
+                                const artiste3_a_ele = artiste3_a[rowind];
+                                artiste3_a_ele.textContent = rowData.c[ind].v;
                             }else if(rowind == 3){
-
+                                const artiste4 = document.getElementById("lien_artiste_4");
+                                const artiste4_a = artiste4.getElementsByTagName("a");
+                                const artiste4_a_ele = artiste4_a[rowind];
+                                artiste4_a_ele.textContent = rowData.c[ind].v;
                             }else if(rowind == 4){
-
+                                const artiste5 = document.getElementById("lien_artiste_5");
+                                const artiste5_a = artiste5.getElementsByTagName("a");
+                                const artiste5_a_ele = artiste5_a[rowind];
+                                artiste5_a_ele.textContent = rowData.c[ind].v;
                             }
                             
                         }
