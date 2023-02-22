@@ -68,7 +68,7 @@ function init() {
 
         const artiste1 = document.getElementById("lien_artiste_1");
         const artiste1_a = artiste1.getElementsByTagName("a");
-        artiste1_a[0].value('coucou');
+        artiste1_a[0].textContent('coucou');
         const artiste2 = document.getElementById("lien_artiste_2");
         const artiste2_a = artiste2.getElementsByTagName("a");
         const artiste3 = document.getElementById("lien_artiste_3");
