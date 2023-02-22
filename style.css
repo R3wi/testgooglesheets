@@ -2,57 +2,170 @@
     font-family: 'ABCMaxiRoundVariable';
     src: url('fonts/ABCMaxiRoundVariable.woff');
 }
-header nav {
-	padding: 1vw 7%;
+body{
+	background-color: #51d293;
+	background-image: url("./assets/background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+header{
+	padding:0 7vw;
+}
+header nav ul{
 	display: flex;
 	justify-content: space-between;
+	padding: 4vw 0;
+	margin:0;
 	font-family: 'LL Circular Book Sub';
 	font-size: 24px;
 	font-weight: bold;
 	color:#261C1C;
 	cursor:default;
+	list-style: none;
+	position:relative;
+}
+header nav ul li.wrapper_nav {
+	box-sizing: border-box;
+	height: 30px;
+}
+header nav ul li#wrapper_nav_editions{
+	flex-grow:0;
+	width:120px;
+}
+header nav ul li#wrapper_nav_apropos{
+	flex-grow: 1;
+	margin-left: 8vw;
+}
+header nav ul li#wrapper_nav_lang {
+	display: inherit;
+	margin-right: 10vw;
+}
+header nav ul li#wrapper_nav_lang #wrapper_nav_lang_spacer{
+	margin:0 0.5vw;
+}
+header nav ul li#wrapper_nav_editions:hover,
+header nav ul li#wrapper_nav_editions:focus{
+	border-bottom:3px solid #261C1C;
+}
+header nav ul li#wrapper_nav_editions a{
+	text-align: center;
+}
+header nav ul ul {
+	display: none;
+	position: absolute;
+	top: 5.5vw;
+	padding: 0;
+}
+header nav ul li#wrapper_nav_editions ul{
+	width:120px;
+}
+header nav ul li:hover > ul {
+	display: inherit;
+}
+header nav ul ul li {
+	float: none;
+	display: list-item;
+	position: relative;
+	border-bottom: 3px solid #261C1C;
+	padding-top:15px;
 }
 header nav a{
 	color:#261C1C;
 	text-decoration: none;
 	text-transform: uppercase;
 	cursor:pointer;
+	display:block;
 }
 header nav a:hover,
 header nav a:focus{
 	text-decoration: underline;
+	text-decoration-thickness: 3px;
+}
+header nav ul li#wrapper_nav_editions:hover a,
+header nav ul li#wrapper_nav_editions:focus a{
+	text-decoration: none;
+}
+header nav .toggle, header nav [id^=nav] {
+	display: none;
 }
 header h1 {
 	font-family: 'ABCMaxiRoundVariable';
 	font-size: 96px;
+	font-size: 5vw;
 	text-transform: uppercase;
-	width: 32%;
-	color:#261C1C;
+	width: 32vw;
+	color: #261C1C;
+	margin-top: 9vw;
+	line-height: 1.4em;
+	margin-left: 2.5vw;
+	margin-bottom: 0.6vw;
 }
-main{
+main {
+	position: relative;
+	margin: 0 15.5vw 23.5vw 15.5vw;
+}
+main #lignes_artistes{
 	position:relative;
 }
-#lignes_artistes img{
+main #lignes_artistes img{
 	position:absolute;
 	width:100%;
+	top:0;
+	left:0;
+}
+main #lignes_artistes img#ligne_artiste_1{
+	position:static;
 }
 section#liens_artistes{
-	position:relative;
+	position:absolute;
+	top:0;
+	left:0;
 	z-index: 2;
+	width:100%;
+	height:100%;
 }
 section#liens_artistes h2 {
 	position: absolute;
 	width: 12%;
 	font-family: 'ABCMaxiRoundVariable';
-	font-size: 48px;
-	padding: 20px 4%;
+	font-size: 2.5vw;
 	margin: 0;
 }
 section#liens_artistes h2#lien_artiste_1{
-	left: calc(75% - 20%);
-	top: 26vw;
+	left: 40vw;
+	top: 18vw;
+}
+section#liens_artistes h2#lien_artiste_2 {
+	left: 39vw;
+	top: 97vw;
+	width: 16vw;
+}
+section#liens_artistes h2#lien_artiste_3 {
+	left: -3vw;
+	top: 165.5vw;
+	width: 16vw;
+}
+section#liens_artistes h2#lien_artiste_4 {
+	left: 43vw;
+	top: 258vw;
+	width: 19vw;
+}
+section#liens_artistes h2#lien_artiste_5 {
+	left: 40vw;
+	top: 348.5vw;
+	width: 11vw;
 }
 section#liens_artistes h2 a{
 	color:#000;
 	text-decoration: none;
+}
+footer{
+	display:flex;
+	background: #EAEAEA;
+	height:16vw;
+	padding:0 7vw;
+}
+footer #fondation_logo{
+	display:inline-flex;
+	width:21vw;
 }
