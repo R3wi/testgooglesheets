@@ -129,4 +129,7 @@ $( document ).ready(function() {
         const artiste5_a_ele = artiste5_a[0];
         artiste5_a_ele.textContent = nomArtistes[4];
         console.log('jquery fin');
+
+        $('#lien_artiste_1 a').html('coucou');
+        console.log(nomArtistes[0]);
 });
