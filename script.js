@@ -45,6 +45,7 @@ function init() {
                 const row = {};
                 colz.forEach((ele, ind) => {
                     console.log('element: ' + rowData.c[ind].v);
+                    console.log('element 2:' + ele);
                     row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
                 })
                 data.push(row);
