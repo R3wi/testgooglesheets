@@ -90,6 +90,10 @@ function init() {
         artiste5_a_ele.textContent = nomArtistes[4];
 
         console.log('fin');
+
+        $('#lien_artiste_1 a').html('coucou');
+        console.log(nomArtistes[0]);
+        $('#lien_artiste_1 a').html(nomArtistes[0]);
 }
 
 function processRows(json) {
