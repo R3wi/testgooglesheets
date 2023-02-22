@@ -69,13 +69,6 @@ function init() {
 
         console.log("nomArtistes");
         console.log(nomArtistes);
-
-
-        $('#lien_artiste_1 a').html(nomArtistes[0]);
-        $('#lien_artiste_2 a').html(nomArtistes[1]);
-        $('#lien_artiste_3 a').html(nomArtistes[2]);
-        $('#lien_artiste_4 a').html(nomArtistes[3]);
-        $('#lien_artiste_5 a').html(nomArtistes[4]);
 }
 
 function processRows(json) {
@@ -91,3 +84,11 @@ function processRows(json) {
         //output.appendChild(tr);
     })
 }
+
+$( document ).ready(function() {
+    $('#lien_artiste_1 a').html(nomArtistes[0]);
+    $('#lien_artiste_2 a').html(nomArtistes[1]);
+    $('#lien_artiste_3 a').html(nomArtistes[2]);
+    $('#lien_artiste_4 a').html(nomArtistes[3]);
+    $('#lien_artiste_5 a').html(nomArtistes[4]);
+});
