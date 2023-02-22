@@ -8,6 +8,14 @@ body{
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+#background-video {
+	width: 100vw;
+	object-fit: cover;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+}
 header{
 	padding:0 7vw;
 }
