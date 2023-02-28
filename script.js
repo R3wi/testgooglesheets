@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', init);
 
 window.onload = async function () {
     //let response = await fetch("https://sheets.googleapis.com/v4/spreadsheets/1c2pjjmdqcpb8GeXSl_RhZ-vTVERVQcQzETUdbWOD9Ac/values/'IGNORER - Données publiques'!A:J?key=AIzaSyAl3TfynOtVS2PQRKyJPWxJShQdESCvsy4");
-    let response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/'${dataTab}'!${dataRange}?key=AIzaSyAgOyGb6slHo7YLkkLJpKUNGVKXukafokw`);
+    let response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/'${pageParams.dataTab}'!${pageParams.dataRange}?key=AIzaSyAgOyGb6slHo7YLkkLJpKUNGVKXukafokw`);
   
     if (response.ok) { // if HTTP-status is 200-299
       //ajouter_donnees_DOM(await response.json());
