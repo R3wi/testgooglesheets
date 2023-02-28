@@ -1,4 +1,5 @@
 const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
+/*
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
 const sheetName = 'BDD Jardin sans mur';
 const query = encodeURIComponent('Select *');
@@ -6,6 +7,26 @@ const url = `${base}&sheet=${sheetName}&tq=${query}`;
 const data = [];
 document.addEventListener('DOMContentLoaded', init);
 //const output = document.querySelector('#output')
+*/
+
+window.onload = async function () {
+    //let response = await fetch("https://sheets.googleapis.com/v4/spreadsheets/1c2pjjmdqcpb8GeXSl_RhZ-vTVERVQcQzETUdbWOD9Ac/values/'IGNORER - Données publiques'!A:J?key=AIzaSyAl3TfynOtVS2PQRKyJPWxJShQdESCvsy4");
+    let response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/'${dataTab}'`);
+  
+    if (response.ok) { // if HTTP-status is 200-299
+      //ajouter_donnees_DOM(await response.json());
+      console.log('données:');
+      console.log(await response.json());
+      
+    } else {
+      alert("HTTP-Error: " + response.status);
+    }
+  }
+
+
+
+
+
 
 
 
