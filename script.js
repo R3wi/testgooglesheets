@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', init);
 //const output = document.querySelector('#output')
 */
 
+const current_page_url = window.location.href;
+console.log(current_page_url);
+
 window.onload = async function () {
     //let response = await fetch("https://sheets.googleapis.com/v4/spreadsheets/1c2pjjmdqcpb8GeXSl_RhZ-vTVERVQcQzETUdbWOD9Ac/values/'IGNORER - Données publiques'!A:J?key=AIzaSyAl3TfynOtVS2PQRKyJPWxJShQdESCvsy4");
     let response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/'${pageParams.dataTab}'!${pageParams.dataRange}?key=AIzaSyAgOyGb6slHo7YLkkLJpKUNGVKXukafokw`);
@@ -160,5 +163,5 @@ $( document ).ready(function() {
             $('header').prepend($nav);
         }
     });
-    
+
 });
