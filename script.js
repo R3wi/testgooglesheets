@@ -150,29 +150,15 @@ function init() {
         
 }
 
-function processRows(json) {
-    json.forEach((row) => {
-        const tr = document.createElement('tr');
-        const keys = Object.keys(row);
-    
-        keys.forEach((key) => {
-            const td = document.createElement('td');
-            td.textContent = row[key];
-            tr.appendChild(td);
-        })
-        //output.appendChild(tr);
-    })
-}
-
 $( document ).ready(function() {
-    console.log('jquery document ready');
     
     $.ajax({
         url:'main-nav.html',
         success: function (data){
             $nav = $(data);
-            
+
             $('header').prepend($nav);
         }
     });
+    
 });
