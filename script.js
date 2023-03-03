@@ -170,10 +170,9 @@ $( document ).ready(function() {
     $.ajax({
         url:'main-nav.html',
         success: function (data){
-            console.log(data);
-            //parse your data here
-            //you can split into lines using data.split('\n') 
-            //an use regex functions to effectively parse it
+            $nav = $(data);
+            
+            $('header').prepend($nav);
         }
     });
 });
