@@ -15,8 +15,34 @@ window.onload = async function () {
   
     if (response.ok) { // if HTTP-status is 200-299
       //ajouter_donnees_DOM(await response.json());
+
+      const data = await response.json();
+
       console.log('données:');
-      console.log(await response.json());
+      console.log(data);
+      
+      switch (pageParams.page) {
+        case 'accueil':
+        case 'home':
+            console.log('accueil');
+            break;
+        case 'a-propos':
+        case 'about':
+            console.log('a-propos');
+            console.log("data.values");
+            console.log(data.values);
+          
+            let i = 0;
+
+            while (data.values[i]) {
+                console.log(data.values[i]);
+                i++;
+            }
+            
+            break;
+        default:
+          
+      }
       
     } else {
       alert("HTTP-Error: " + response.status);
