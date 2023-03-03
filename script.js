@@ -1,3 +1,12 @@
+const current_page_url = new URL(window.location.href);
+console.log(current_page_url);
+
+const current_page_params = current_page_url.search;
+console.log(current_page_params);
+
+
+
+
 const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
 /*
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
@@ -8,9 +17,6 @@ const data = [];
 document.addEventListener('DOMContentLoaded', init);
 //const output = document.querySelector('#output')
 */
-
-const current_page_url = window.location.href;
-console.log(current_page_url);
 
 window.onload = async function () {
     //let response = await fetch("https://sheets.googleapis.com/v4/spreadsheets/1c2pjjmdqcpb8GeXSl_RhZ-vTVERVQcQzETUdbWOD9Ac/values/'IGNORER - Données publiques'!A:J?key=AIzaSyAl3TfynOtVS2PQRKyJPWxJShQdESCvsy4");
