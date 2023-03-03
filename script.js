@@ -14,46 +14,46 @@ window.onload = async function () {
     let response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/'${pageParams.dataTab}'!${pageParams.dataRange}?key=AIzaSyAgOyGb6slHo7YLkkLJpKUNGVKXukafokw`);
   
     if (response.ok) { // if HTTP-status is 200-299
-      //ajouter_donnees_DOM(await response.json());
+        //ajouter_donnees_DOM(await response.json());
 
-      const data = await response.json();
+        const data = await response.json();
 
-      console.log('données:');
-      console.log(data);
+        console.log('données:');
+        console.log(data);
       
-      switch (pageParams.page) {
-        case 'accueil':
-        case 'home':
-            console.log('accueil');
-            break;
-        case 'a-propos':
-        case 'about':
-            console.log('a-propos');
-            console.log("data.values");
-            console.log(data.values);
-          
-            let aProposStart = 1;
-            let $textContent = $('#a-propos-text');
-
-            while (data.values[aProposStart]) {
-                console.log(data.values[aProposStart]);
-                
-                const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
-                
-                $textContent.append($textToAppend);
-                
-                aProposStart++;
-            }
+        switch (pageParams.page) {
+            case 'accueil':
+            case 'home':
+                console.log('accueil');
+                break;
+            case 'a-propos':
+            case 'about':
+                console.log('a-propos');
+                console.log("data.values");
+                console.log(data.values);
             
-            break;
-        default:
+                let aProposStart = 1;
+                let $textContent = $('#a-propos-text');
+
+                while (data.values[aProposStart]) {
+                    console.log(data.values[aProposStart]);
+                    
+                    const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
+                    
+                    $textContent.append($textToAppend);
+                    
+                    aProposStart++;
+                }
+                
+                break;
+            default:
           
-      }
+        }
       
     } else {
-      alert("HTTP-Error: " + response.status);
+        alert("HTTP-Error: " + response.status);
     }
-  }
+}
 
 
 
@@ -167,4 +167,13 @@ function processRows(json) {
 $( document ).ready(function() {
     console.log('jquery document ready');
     
+    $.ajax({
+        url:'main-nav.html',
+        success: function (data){
+            console.log(data);
+            //parse your data here
+            //you can split into lines using data.split('\n') 
+            //an use regex functions to effectively parse it
+        }
+    });
 });
