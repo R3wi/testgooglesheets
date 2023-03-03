@@ -37,8 +37,11 @@ window.onload = async function () {
 
             while (data.values[aProposStart]) {
                 console.log(data.values[aProposStart]);
+                
                 const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
+                
                 $textContent.append($textToAppend);
+                
                 aProposStart++;
             }
             
