@@ -32,11 +32,14 @@ window.onload = async function () {
             console.log("data.values");
             console.log(data.values);
           
-            let i = 0;
+            let aProposStart = 1;
+            let $textContent = $('#a-propos-text');
 
-            while (data.values[i]) {
-                console.log(data.values[i]);
-                i++;
+            while (data.values[aProposStart]) {
+                console.log(data.values[aProposStart]);
+                const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
+                $textContent.append($textToAppend);
+                aProposStart++;
             }
             
             break;
