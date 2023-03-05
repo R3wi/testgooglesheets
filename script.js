@@ -42,10 +42,12 @@ window.onload = async function () {
 
                         $('#lignes_artistes').children('img').eq(elementPosition).show();
 
-                        let artiste_link = $('#liens_artistes').children('h2').eq(elementPosition).find('a');
+                        const artiste_title = $('#liens_artistes').children('h2').eq(elementPosition);
+                        artiste_title.show();
 
+                        const artiste_link = artiste_title.find('a');
                         artiste_link.text(data.values[accueilStart][1]);
-                        artiste_link.href( './' + encodeURIComponent(data.values[accueilStart][1] + data.values[accueilStart][2]) );
+                        artiste_link.attr('href', ( './' + encodeURIComponent(data.values[accueilStart][1] + data.values[accueilStart][2]) ));
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
                     
