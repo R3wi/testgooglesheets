@@ -1,12 +1,8 @@
 const current_page_url = new URL(window.location.href);
 console.log(current_page_url);
 
-const current_page_params = current_page_url.search;
-console.log(current_page_params);
-
-const current_edition = current_page_url.searchParams.get('edition');
-console.log(current_edition);
-
+const asked_edition = current_page_url.searchParams.get('edition');
+console.log(asked_edition);
 
 const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
 /*
@@ -35,6 +31,20 @@ window.onload = async function () {
             case 'accueil':
             case 'home':
                 console.log('accueil');
+                
+                let accueilStart = 1; // démarre à la ligne 1 parce que la ligne 0 est l'entête de la table
+
+                while (data.values[accueilStart]) {
+                    console.log(data.values[accueilStart]);
+                    
+                    /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
+                    
+                    $textContent.append($textToAppend);
+                    */
+                    accueilStart++;
+                }
+
+                
                 break;
             case 'a-propos':
             case 'about':
@@ -42,7 +52,7 @@ window.onload = async function () {
                 console.log("data.values");
                 console.log(data.values);
             
-                let aProposStart = 1;
+                let aProposStart = 1; // démarre à la ligne 1 parce que la ligne 0 est l'entête de la table
                 let $textContent = $('#a-propos-text');
 
                 while (data.values[aProposStart]) {
