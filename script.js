@@ -4,7 +4,8 @@ console.log(current_page_url);
 const current_page_params = current_page_url.search;
 console.log(current_page_params);
 
-
+const current_edition = current_page_url.searchParams.get('edition');
+console.log(current_edition);
 
 
 const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
