@@ -53,7 +53,7 @@ window.onload = async function () {
                         const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\u0153/g, "oe").replace(/'/g,"")
                         artiste_link.attr('href', ( './oeuvre?titre=' + encodeURIComponent(normalized_artiste_url) ));
 
-                        alert('là');
+                        
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
                     
@@ -197,10 +197,10 @@ $( document ).ready(function() {
 
             $('header').prepend($nav);
 
-            alert('header est loadé');
+            //alert('header est loadé');
         }
     });
 
-    alert('fin jquery ready');
+    //alert('fin jquery ready');
 
 });
