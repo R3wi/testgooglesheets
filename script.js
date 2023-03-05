@@ -48,9 +48,9 @@ window.onload = async function () {
                         const artiste_link = artiste_title.find('a');
                         artiste_link.text(data.values[accueilStart][1]);
 
-                        const artiste_url = data.values[accueilStart][1].toLowerCase() + '-' + data.values[accueilStart][2].toLowerCase();
-                        const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\s/g, '_').replace(/\u0153/g, "oe").replace(/'/g,"")
-                        artiste_link.attr('href', ( './' + encodeURIComponent(normalized_artiste_url) ));
+                        const artiste_url = data.values[accueilStart][1] + '-' + data.values[accueilStart][2];
+                        const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\s/g, '+').replace(/\u0153/g, "oe").replace(/'/g,"")
+                        artiste_link.attr('href', ( './oeuvre?titre=' + encodeURIComponent(normalized_artiste_url) ));
 
                         alert('là');
                     }
