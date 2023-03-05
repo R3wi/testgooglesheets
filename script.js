@@ -33,11 +33,14 @@ window.onload = async function () {
                 let accueilStart = 1; // démarre à la ligne 1 parce que la ligne 0 est l'entête de la table
 
                 while (data.values[accueilStart]) {
-                    if(
-                        asked_edition == null
-                        ||
-                        data.values[accueilStart][0] == asked_edition
-                    ){
+                    if(asked_edition == null){
+                        asked_edition = data.values[accueilStart][0];
+                        console.log(asked_edition);
+                    }
+
+                    if(data.values[accueilStart][0] == asked_edition){
+                        
+                        //$('#lignes_artistes');
                         console.log(data.values[accueilStart]);
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );

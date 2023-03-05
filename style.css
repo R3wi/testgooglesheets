@@ -121,6 +121,7 @@ main #lignes_artistes img{
 	width:100%;
 	top:0;
 	left:0;
+	display:none;
 }
 main #lignes_artistes img#ligne_artiste_1{
 	position:static;
@@ -139,6 +140,7 @@ section#liens_artistes h2 {
 	font-family: 'ABCMaxiRoundVariable';
 	font-size: 2.5vw;
 	margin: 0;
+	display:none;
 }
 section#liens_artistes h2#lien_artiste_1{
 	left: 40vw;
