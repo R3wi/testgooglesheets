@@ -1,7 +1,7 @@
 const current_page_url = new URL(window.location.href);
 console.log(current_page_url);
 
-const asked_edition = current_page_url.searchParams.get('edition');
+let asked_edition = current_page_url.searchParams.get('edition');
 console.log(asked_edition);
 
 const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
@@ -40,7 +40,7 @@ window.onload = async function () {
 
                     if(data.values[accueilStart][0] == asked_edition){
                         
-                        //$('#lignes_artistes');
+                        $('#lignes_artistes img').children('img').eq(accueilStart).show();
                         console.log(data.values[accueilStart]);
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
