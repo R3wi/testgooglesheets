@@ -195,7 +195,11 @@ $( document ).ready(function() {
             $nav = $(data);
 
             $('header').prepend($nav);
+
+            alert('header est loadé');
         }
     });
+
+    alert('fin jquery ready');
 
 });
