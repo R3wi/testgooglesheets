@@ -39,6 +39,11 @@ window.onload = async function () {
 
                     if(data.values[accueilStart][0] == asked_edition){
                         $('#lignes_artistes').children('img').eq(accueilStart).show();
+
+                        console.log($('#lignes_artistes').children('img'));
+                        console.log(accueilStart);
+
+
                         console.log(data.values[accueilStart]);
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
