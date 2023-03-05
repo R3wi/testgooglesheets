@@ -38,13 +38,14 @@ window.onload = async function () {
                     }
 
                     if(data.values[accueilStart][0] == asked_edition){
-                        $('#lignes_artistes').children('img').eq(accueilStart).show();
+                        const elementPosition = accueilStart - 1;
 
-                        console.log($('#lignes_artistes').children('img'));
-                        console.log(accueilStart);
+                        $('#lignes_artistes').children('img').eq(elementPosition).show();
 
+                        const artiste_link = $('#liens_artistes').children('h2').eq(elementPosition).find('a');
 
-                        console.log(data.values[accueilStart]);
+                        artiste_link.text(data.values[accueilStart][1]);
+                        artiste_link.href( './' + encodeURIComponent(data.values[accueilStart][1] + data.values[accueilStart][2]) );
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
                     
