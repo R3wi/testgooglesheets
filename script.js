@@ -48,8 +48,9 @@ window.onload = async function () {
                         const artiste_link = artiste_title.find('a');
                         artiste_link.text(data.values[accueilStart][1]);
 
-                        const artiste_url = data.values[accueilStart][1].toLowerCase() + '-' + data.values[accueilStart][2].toLowerCase();
-                        const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\s/g, '_').toLowerCase().replace(/\u0153/g, "oe").replace(/'/g,"")
+                        /*const artiste_url = data.values[accueilStart][1].toLowerCase() + '-' + data.values[accueilStart][2].toLowerCase();*/
+                        const artiste_url = data.values[accueilStart][1].toLowerCase() + '–' + data.values[accueilStart][2].toLowerCase();
+                        const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\s/g, '_').replace(/\u0153/g, "oe").replace(/'/g,"")
                         artiste_link.attr('href', ( './' + encodeURIComponent(normalized_artiste_url) ));
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
