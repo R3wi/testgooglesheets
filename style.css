@@ -112,6 +112,7 @@ header h1 {
 main {
 	position: relative;
 	margin: 0 15.5vw 23.5vw 15.5vw;
+	min-height:100vw;
 }
 main #lignes_artistes{
 	position:relative;

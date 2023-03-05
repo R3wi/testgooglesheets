@@ -35,12 +35,10 @@ window.onload = async function () {
                 while (data.values[accueilStart]) {
                     if(asked_edition == null){
                         asked_edition = data.values[accueilStart][0];
-                        console.log(asked_edition);
                     }
 
                     if(data.values[accueilStart][0] == asked_edition){
-                        
-                        $('#lignes_artistes img').children('img').eq(accueilStart).show();
+                        $('#lignes_artistes').children('img').eq(accueilStart).show();
                         console.log(data.values[accueilStart]);
                     }
                     /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
