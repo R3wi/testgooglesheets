@@ -42,7 +42,7 @@ window.onload = async function () {
 
                         $('#lignes_artistes').children('img').eq(elementPosition).show();
 
-                        const artiste_link = $('#liens_artistes').children('h2').eq(elementPosition).find('a');
+                        let artiste_link = $('#liens_artistes').children('h2').eq(elementPosition).find('a');
 
                         artiste_link.text(data.values[accueilStart][1]);
                         artiste_link.href( './' + encodeURIComponent(data.values[accueilStart][1] + data.values[accueilStart][2]) );
