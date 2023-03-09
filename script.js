@@ -3,6 +3,8 @@ console.log(current_page_url);
 
 let asked_edition = current_page_url.searchParams.get('edition');
 console.log(asked_edition);
+let asked_oeuvre = current_page_url.searchParams.get('titre');
+console.log(asked_oeuvre);
 
 const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
 /*
@@ -51,7 +53,7 @@ window.onload = async function () {
                         const artiste_url = data.values[accueilStart][1] + '–' + data.values[accueilStart][2];
                         //const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\s/g, '+').replace(/\u0153/g, "oe").replace(/'/g,"")
                         const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\u0153/g, "oe").replace(/'/g,"")
-                        artiste_link.attr('href', ( './oeuvre?titre=' + encodeURIComponent(normalized_artiste_url) ));
+                        artiste_link.attr('href', ( './oeuvre/?titre=' + encodeURIComponent(normalized_artiste_url) ));
 
                         
                     }
@@ -83,6 +85,44 @@ window.onload = async function () {
                     aProposStart++;
                 }
                 
+                break;
+            case 'oeuvre':
+            case 'work':
+                console.log('oeuvre');
+                console.log("data.values");
+                console.log(data.values);
+
+                let oeuvreStart = 1; // démarre à la ligne 1 parce que la ligne 0 est l'entête de la table
+
+                while (data.values[oeuvreStart]) {
+
+
+
+                    if(data.values[oeuvreStart][0] == asked_edition){
+                        const elementPosition = oeuvreStart - 1;
+
+                        $('#lignes_artistes').children('img').eq(elementPosition).show();
+
+                        const artiste_title = $('#liens_artistes').children('h2').eq(elementPosition);
+                        artiste_title.show();
+
+                        const artiste_link = artiste_title.find('a');
+                        artiste_link.text(data.values[oeuvreStart][1]);
+
+                        const artiste_url = data.values[oeuvreStart][1] + '–' + data.values[oeuvreStart][2];
+                        //const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\s/g, '+').replace(/\u0153/g, "oe").replace(/'/g,"")
+                        const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\u0153/g, "oe").replace(/'/g,"")
+                        artiste_link.attr('href', ( './oeuvre/?titre=' + encodeURIComponent(normalized_artiste_url) ));
+
+                        
+                    }
+                    /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
+                    
+                    $textContent.append($textToAppend);
+                    */
+                    oeuvreStart++;
+                }
+
                 break;
             default:
           
