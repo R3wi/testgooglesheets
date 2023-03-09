@@ -95,6 +95,9 @@ window.onload = async function () {
                         const current_loop_artiste_url = data.values[oeuvreStart][1] + '–' + data.values[oeuvreStart][2];
                         const current_loop_normalized_artiste_url = current_loop_artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\u0153/g, "oe").replace(/'/g,"")
 
+                        console.log("current_loop_normalized_artiste_url: " + current_loop_normalized_artiste_url);
+                        console.log("data.values[oeuvreStart][1]: " + data.values[oeuvreStart][1]);
+
                         if(data.values[oeuvreStart][1] == current_loop_normalized_artiste_url){
                             
                             const oeuvreArtiste = data.values[oeuvreStart][1];
