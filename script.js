@@ -139,14 +139,14 @@ function get_pageParams(request_pathname, nodes = []){
     // Remove last node from path and add to nodes array
     nodes.push({ name: parts.pop(), request_pathname });
     // Update path without last node (already added)
-    request_pathname = parts.join('/')
+    request_pathname = parts.join('/');
     if (request_pathname.length) {
         // Recall method recursively if nodes left
-        return get_pageParams(path, nodes)
+        return get_pageParams(path, nodes);
     } else {
         // Or add root node to array and return it
-        nodes.push({ name: '/', path: '/' })
-        return nodes
+        nodes.push({ name: '/', path: '/' });
+        return nodes;
     }
 
     /*
