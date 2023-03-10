@@ -1,24 +1,24 @@
-const current_page_url = new URL(window.location.href);
-console.log(current_page_url);
+var current_page_url = new URL(window.location.href);
+var pageParams = get_pageParams(current_page_url.pathname);
 
-let asked_edition = current_page_url.searchParams.get('edition');
-console.log(asked_edition);
-let asked_oeuvre = current_page_url.searchParams.get('titre');
-console.log(asked_oeuvre);
+console.log(pageParams);
 
-const sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
+
+
+var asked_edition = current_page_url.searchParams.get('edition');
+var asked_performance = current_page_url.searchParams.get('titre');
+
+var sheetId = '1G5Se0BIT8V-dcwiHSUFgEUZjVorpcaD2PZxoo3_YbZM';
+
+// document.addEventListener("DOMContentLoaded", init); ====> awaits only for HTML and scripts to be loaded
+// window.onload = async function(){} ====> triggers when the page is fully loaded with all dependent resources including images and styles
 /*
-const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
-const sheetName = 'BDD Jardin sans mur';
-const query = encodeURIComponent('Select *');
-const url = `${base}&sheet=${sheetName}&tq=${query}`;
-const data = [];
-document.addEventListener('DOMContentLoaded', init);
-//const output = document.querySelector('#output')
+Does DOMContentLoaded guarantee that all the scripts (including defer/async) have been loaded?
+Yes. async only refers to how the script is downloaded. With or without async will pause the document parser to evaluate as soon as it is downloaded. defer indicates "to a browser that the script is meant to be executed after the document has been parsed, but before firing DOMContentLoaded."
 */
 
 window.onload = async function () {
-    //let response = await fetch("https://sheets.googleapis.com/v4/spreadsheets/1c2pjjmdqcpb8GeXSl_RhZ-vTVERVQcQzETUdbWOD9Ac/values/'IGNORER - Données publiques'!A:J?key=AIzaSyAl3TfynOtVS2PQRKyJPWxJShQdESCvsy4");
+    let pageParams = get_pageParams();
     let response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/'${pageParams.dataTab}'!${pageParams.dataRange}?key=AIzaSyAgOyGb6slHo7YLkkLJpKUNGVKXukafokw`);
   
     if (response.ok) { // if HTTP-status is 200-299
@@ -52,7 +52,7 @@ window.onload = async function () {
 
                         const artiste_url = data.values[accueilStart][1] + '–' + data.values[accueilStart][2];
                         const normalized_artiste_url = artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\u0153/g, "oe").replace(/'/g,"")
-                        artiste_link.attr('href', ( './oeuvre/?titre=' + encodeURIComponent(normalized_artiste_url) ));
+                        artiste_link.attr('href', ( './performance/?titre=' + encodeURIComponent(normalized_artiste_url) ));
 
                         
                     }
@@ -85,39 +85,41 @@ window.onload = async function () {
                 }
                 
                 break;
-            case 'oeuvre':
+            case 'performance':
             case 'work':
-                if(asked_oeuvre !== null){
-                    let oeuvreStart = 1; // démarre à la ligne 1 parce que la ligne 0 est l'entête de la table
+                if(asked_performance !== null){
+                    let performanceStart = 1; // démarre à la ligne 1 parce que la ligne 0 est l'entête de la table
 
-                    while (data.values[oeuvreStart]) {
+                    while (data.values[performanceStart]) {
 
-                        const current_loop_artiste_url = data.values[oeuvreStart][1] + '–' + data.values[oeuvreStart][2];
+                        const current_loop_artiste_url = data.values[performanceStart][1] + '–' + data.values[performanceStart][2];
                         const current_loop_normalized_artiste_url = current_loop_artiste_url.normalize("NFKD").replace(/\p{Diacritic}/gu, "").replace(/\u0153/g, "oe").replace(/'/g,"")
 
                         console.log("current_loop_normalized_artiste_url: " + current_loop_normalized_artiste_url);
-                        console.log("data.values[oeuvreStart][1]: " + data.values[oeuvreStart][1]);
+                        console.log("data.values[performanceStart][1]: " + data.values[performanceStart][1]);
 
-                        if(data.values[oeuvreStart][1] == current_loop_normalized_artiste_url){
+                        if(data.values[performanceStart][1] == current_loop_normalized_artiste_url){
                             
-                            const oeuvreArtiste = data.values[oeuvreStart][1];
-                            const oeuvreTitre = data.values[oeuvreStart][2];
-                            const oeuvreDescription = data.values[oeuvreStart][3];
-                            const oeuvreVideo = data.values[oeuvreStart][4];
+                            const performanceArtiste = data.values[performanceStart][1];
+                            const performanceTitre = data.values[performanceStart][2];
+                            const performanceDescription = data.values[performanceStart][3];
+                            const performanceVideo = data.values[performanceStart][4];
 
-                            console.log(oeuvreArtiste);
-                            console.log(oeuvreTitre);
-                            console.log(oeuvreDescription);
-                            console.log(oeuvreVideo);
+                            console.log(performanceArtiste);
+                            console.log(performanceTitre);
+                            console.log(performanceDescription);
+                            console.log(performanceVideo);
                             
                         }
                         /*const $textToAppend = $( "<p>" + data.values[aProposStart] + "</p>" );
                         
                         $textContent.append($textToAppend);
                         */
-                        oeuvreStart++;
+                        performanceStart++;
                     }
                 
+                }else{
+                    window.location.replace("/");
                 }
 
                 break;
@@ -131,113 +133,50 @@ window.onload = async function () {
 }
 
 
+function get_pageParams(request_pathname, nodes = []){
+    // Split by levels
+    const parts = request_pathname.split('/');
+    // Remove last node from path and add to nodes array
+    nodes.push({ name: parts.pop(), request_pathname });
+    // Update path without last node (already added)
+    request_pathname = parts.join('/')
+    if (request_pathname.length) {
+        // Recall method recursively if nodes left
+        return get_pageParams(path, nodes)
+    } else {
+        // Or add root node to array and return it
+        nodes.push({ name: '/', path: '/' })
+        return nodes
+    }
 
-
-
-
-
-
-const nomArtistes = [];
-
-
-
-function init() {
-    fetch(url)
-        .then(res => res.text())
-        .then(rep => {
-            //Remove additional text and extract only JSON:
-            const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
-            
-            
-
-
-
-
-
-
-            const colz = [];
-            const tr = document.createElement('tr');
-            //Extract column labels
-
-            // TODO: fetch l'index de la colonne qui nous intéresse pour la réutiliser pour récupérer les données, ça évitera de SUPPOSER la position de la bonne colonne
-            jsonData.table.cols.forEach((heading) => {
-                if (heading.label) {
-                    //console.log('colonne : ' + heading.label);
-                    let column = heading.label;
-                    colz.push(column);
-                    const th = document.createElement('th');
-                    th.innerText = column;
-                    tr.appendChild(th);
-                }
-            })
-            //output.appendChild(tr);
-            //extract row data:
-            jsonData.table.rows.forEach((rowData, rowind) => {
-                //console.log('row: (suivant)');
-                //console.log(rowData);
-
-                const row = {};
-                colz.forEach((ele, ind) => {
-                    if(rowData.c[ind] != null){
-                        //console.log('element: ' + rowData.c[ind].v);
-                        //console.log('element 2:' + ele);
-                        if(ind == 2){
-                            nomArtistes.push(rowData.c[ind].v);
-                            
-                            if(rowind == 0){
-                                const artiste1 = document.getElementById("lien_artiste_1");
-                                const artiste1_a = artiste1.getElementsByTagName("a");
-                                const artiste1_a_ele = artiste1_a[0];
-                                artiste1_a_ele.textContent = rowData.c[ind].v;
-                            }else if(rowind == 1){
-                                const artiste2 = document.getElementById("lien_artiste_2");
-                                const artiste2_a = artiste2.getElementsByTagName("a");
-                                const artiste2_a_ele = artiste2_a[0];
-                                artiste2_a_ele.textContent = rowData.c[ind].v;
-                            }else if(rowind == 2){
-                                const artiste3 = document.getElementById("lien_artiste_3");
-                                const artiste3_a = artiste3.getElementsByTagName("a");
-                                const artiste3_a_ele = artiste3_a[0];
-                                artiste3_a_ele.textContent = rowData.c[ind].v;
-                            }else if(rowind == 3){
-                                const artiste4 = document.getElementById("lien_artiste_4");
-                                const artiste4_a = artiste4.getElementsByTagName("a");
-                                const artiste4_a_ele = artiste4_a[0];
-                                artiste4_a_ele.textContent = rowData.c[ind].v;
-                            }else if(rowind == 4){
-                                const artiste5 = document.getElementById("lien_artiste_5");
-                                const artiste5_a = artiste5.getElementsByTagName("a");
-                                const artiste5_a_ele = artiste5_a[0];
-                                artiste5_a_ele.textContent = rowData.c[ind].v;
-                            }
-                            
-                        }
-                    }
-                    
-                    //row[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
-                    
-                })
-                data.push(row);
-            })
-            processRows(data);
-        })
-
-        
-}
-
-$( document ).ready(function() {
-    
-    $.ajax({
-        url:'main-nav.html',
-        success: function (data){
-            $nav = $(data);
-
-            $('header').prepend($nav);
-
-            //alert('header est loadé');
+    /*
+    getTree = (path, nodes = []) => {
+        // Split by levels
+        const parts = path.split('/')
+        // Remove last node from path and add to nodes array
+        nodes.push({ name: parts.pop(), path })
+        // Update path without last node (already added)
+        path = parts.join('/')
+        if (path.length) {
+          // Recall method recursively if nodes left
+          return getTree(path, nodes)
+        } else {
+          // Or add root node to array and return it
+          nodes.push({ name: '/', path: '/' })
+          return nodes
         }
-    });
+      }
 
-    //alert('fin jquery ready');
 
-});
+
+
+
+
+    const pageParams = {
+        page: "accueil",
+        dataTab: "Oeuvres",
+        dataRange: 'A:G'
+    };
+
+    */
+}
